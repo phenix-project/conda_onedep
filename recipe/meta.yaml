@@ -1,0 +1,58 @@
+{% set name = "onedep_api" %}
+{% set version = "0.15" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 4bc0b0c1123e7a0a4584c1a337824abdfad57ad349402626c167f8110dcee599
+
+build:
+  noarch: python
+  number: 0
+  entry_points:
+    - onedep_validate_cli=onedep.cli.validate_cli:run
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+
+requirements:
+  host:
+    - pip
+    - python
+    - requests
+    - six
+  run:
+    - python
+    - requests
+    - six
+
+test:
+  imports:
+    - onedep
+    - onedep.api
+    - onedep.cli
+    - onedep.utils
+  commands:
+    - onedep_validate_cli --help
+
+about:
+  home: http://wwpdb.org/validation/onedep-validation-web-service-interface
+  license: Apache Software
+  license_family: APACHE
+  license_file:
+  summary: OneDep Validation Web Service Interface
+  description: |
+    The OneDep validation web service was developed as a wwPDB effort to
+    augment the stand alone validation server by providing a programmatic
+    remote access to such services.
+
+    This service is provided as a Python package. Once installed, access
+    is provided using a command line client or pragmatically using a Python
+    API.
+  doc_url: http://wwpdb.org/validation/onedep-validation-web-service-interface
+  dev_url: http://wwpdb.org/validation/onedep-validation-web-service-interface
+
+extra:
+  recipe-maintainers:
+    - bkpoon
