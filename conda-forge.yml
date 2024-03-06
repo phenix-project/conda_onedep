@@ -1,0 +1,6 @@
+azure:
+  store_build_artifacts: true
+test: native
+github:
+  branch_name: main
+  tooling_branch_name: main
