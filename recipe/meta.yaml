@@ -1,5 +1,5 @@
 {% set name = "onedep_api" %}
-{% set version = "0.18" %}
+{% set version = "0.19" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 5810304515994941cdc2df9158ab0150a44392ab2746cf92b4d80f09a778a722
+  sha256: c15d9ed4664e31ce24789b8c6a74ddd595ea78cf97b0ab865d8a2cc13c536a6b
 
 build:
   noarch: python
